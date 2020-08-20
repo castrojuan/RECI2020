@@ -27,9 +27,10 @@ function mostrar()
 	let contadorInvierno=0;
 	let AcumInvierno=0;
 	let banderaNombreTitularMasPax=0;
-	let contadorBrc=0;
-	let contadorSalta=0;
-	let contadorCataratas=0;
+
+	let acumCataratas=0;
+	let acumBariloche=0;
+	let acumSalta=0;
 	
 
 
@@ -75,17 +76,20 @@ function mostrar()
 	{
 		case "cataratas":
 		{
-			contadorCataratas++;
+			
+			acumCataratas=acumCataratas+cantidadPax;
 		}
 		break;
 		case"bariloche":
 		{
-			contadorBrc++;
+			
+			acumBariloche=acumBariloche+cantidadPax;
 		}
 		break;
 		default:
 		{
-			contadorSalta++;
+			
+			acumSalta=acumSalta+cantidadPax;
 		}
 		break;
 
@@ -97,12 +101,12 @@ function mostrar()
 	}while(respuesta=='s');
 
 
-	if(contadorSalta>contadorBrc && contadorSalta>contadorCataratas)
+	if(acumSalta>acumBariloche && acumSalta>acumCataratas)
 	{
 		lugarMasElegido="salta";
 	}
 
-	else if(lugar=="bariloche")
+	else if(acumBariloche>acumSalta && acumBariloche>acumCataratas)
 	{
 		lugarMasElegido="bariloche";
 	}
@@ -118,7 +122,7 @@ function mostrar()
 
 	document.write("el lugar más elegido " + lugarMasElegido + "<br>");
 	document.write("el nombre del titular que lleva más pasajeros es " + TitularMayorCantidadPax + "<br>");
-	document.write("el promedio de personas por viaje,  que viajan en invierno es "+ AcumInvierno/contadorInvierno + "<br>");
+	document.write("el promedio de personas por viaje,  que viajan en invierno es "+ AcumInvierno/contadorInvierno.toFixed(2) + "<br>");
 
 
 
